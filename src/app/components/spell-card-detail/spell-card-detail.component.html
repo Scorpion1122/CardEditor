@@ -1,0 +1,27 @@
+<div *ngIf="card">
+  <h2>{{ card.name | uppercase }} Details</h2>
+  <div><span>id: </span>{{ card.id }}</div>
+  <div>
+    <label>name: <input [(ngModel)]="card.name" placeholder="name" /> </label>
+  </div>
+
+  <div class="background-border">
+    <div class="background">
+      <div class="content-container">
+        <div class="title">{{ card.name }}</div>
+        <div class="sub-title">{{ card.subTitle }}</div>
+        <ul class="properties-container">
+          <li *ngFor="let property of card.properties | keyvalue" class="card-properties">
+            <div><b>{{property.key}}</b>{{property.value}}</div>
+          </li>
+        </ul>
+        <div class="card-text">{{ card.content }}</div>
+        <div *ngIf="card.atHigherLevel" class="at-higher-levels-container">
+          <div class="at-higher-levels">Higher Levels</div>
+          <div class="line-break"></div>
+          <div class="card-text">{{ card.atHigherLevel }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
