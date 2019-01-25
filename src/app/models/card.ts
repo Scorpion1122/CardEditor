@@ -5,4 +5,5 @@ export class Card {
     properties: Map<string, string>;
     content: string;
     atHigherLevel: string;
+    tags: string[];
 }

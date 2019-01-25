@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Card } from '../models/card';
-import { CARDS } from '../models/mock-cards';
 import { Observable, of } from 'rxjs';
 import { MessageService } from './message.service';
+
+import { CARDS } from '../models/mock-cards';
 
 @Injectable({
   providedIn: 'root'
