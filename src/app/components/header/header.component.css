@@ -1,0 +1,28 @@
+button {
+    margin: 0 0.25em;
+}
+
+.header {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+}
+
+.header-content {
+    display: flex;
+    max-width: 1200px;
+    width: 100%;
+    padding: 0 1em;
+    margin: 0 auto;
+}
+
+.header-title {
+    font-size: 1.5em;
+}
+
+.header-buttons {
+    margin: auto;
+}

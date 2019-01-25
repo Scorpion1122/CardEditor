@@ -14,6 +14,7 @@ import { SpellCardDetailComponent } from './components/spell-card-detail/spell-c
 import { MessagesComponent } from './components/messages/messages.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HeaderComponent } from './components/header/header.component';
+import { CardCollectionComponent } from './components/card-collection/card-collection.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { HeaderComponent } from './components/header/header.component';
     HeroesComponent,
     SpellCardDetailComponent,
     MessagesComponent,
-    HeaderComponent
+    HeaderComponent,
+    CardCollectionComponent
   ],
   imports: [
     BrowserModule,

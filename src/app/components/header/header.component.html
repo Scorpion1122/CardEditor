@@ -1,5 +1,11 @@
-<mat-toolbar color="primary" role="heading">     
-    <span>First Item</span>    
-    <span>Second Item</span>
-    <button mat-icon-button><mat-icon>print</mat-icon></button>
-  </mat-toolbar>
+<mat-toolbar class="header" color="primary" role="heading">  
+  <div class="header-content">
+    <span class="header-title">Spell Card Editor</span>
+    <span class="fill"></span>    
+    <span class="header-buttons">
+      <button mat-raised-button color="accent" routerLink="/collection">Collection</button>
+      <button mat-raised-button color="accent" routerLink="/deck">Deck</button>
+      <button mat-icon-button><mat-icon>print</mat-icon></button>
+  </span>
+  </div>
+</mat-toolbar>
