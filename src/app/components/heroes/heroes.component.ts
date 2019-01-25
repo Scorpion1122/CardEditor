@@ -10,11 +10,6 @@ import { CardService } from '../../services/card.service';
 
 export class HeroesComponent implements OnInit {
 
-  hero: Card = {
-      id: 1,
-      name: 'Windstorm',
-  };
-
   cards: Card[];
   selectedCard: Card;
 
