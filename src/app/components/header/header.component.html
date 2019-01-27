@@ -1,11 +1,12 @@
-<mat-toolbar class="header" color="primary" role="heading">  
+<mat-toolbar class="header" color="primary" role="heading">
   <div class="header-content">
     <span class="header-title">Spell Card Editor</span>
-    <span class="fill"></span>    
+    <span class="fill"></span>
     <span class="header-buttons">
       <button mat-raised-button color="accent" routerLink="/collection">Collection</button>
       <button mat-raised-button color="accent" routerLink="/deck">Deck</button>
       <button mat-icon-button><mat-icon>print</mat-icon></button>
+      <button mat-icon-button (click)="exportCardData()"><mat-icon>save</mat-icon></button>
   </span>
   </div>
 </mat-toolbar>

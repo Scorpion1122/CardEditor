@@ -39,6 +39,9 @@
   padding: 0;
   margin: 2mm 0 1mm 0;
 }
+.property-name {
+  margin-right: 1mm;
+}
 .at-higher-levels-container {
   padding: 1mm 0 2mm 0;
   bottom: 0;

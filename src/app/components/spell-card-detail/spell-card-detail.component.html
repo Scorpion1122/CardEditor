@@ -6,7 +6,7 @@
         <div class="sub-title">{{ card.subTitle }}</div>
         <ul class="properties-container">
           <li *ngFor="let property of card.properties" class="card-properties">
-            <div><b>{{property.name}}</b>{{property.value}}</div>
+            <div><b class="property-name">{{property.name}}</b>{{property.value}}</div>
           </li>
         </ul>
         <div class="card-text">{{ card.content }}</div>
