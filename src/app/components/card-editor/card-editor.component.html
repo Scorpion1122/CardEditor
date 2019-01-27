@@ -1,0 +1,31 @@
+<form>
+    <mat-form-field class="full-width">
+      <input matInput placeholder="Title" [(ngModel)]="selectedCard.name" name="title">
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <input matInput placeholder="Sub Title" [(ngModel)]="selectedCard.subTitle" name="subTitle">
+    </mat-form-field>
+
+    <label>Properties</label>
+    <mat-list role="list">
+      <mat-list-item role="listitem"  *ngFor="let property of selectedCard.properties; let i = index">
+        <mat-form-field class="half-width">
+            <input matInput placeholder="" [value]="property.name" (keyup)="updatePropertyName(i, $event)">
+        </mat-form-field>
+        <mat-form-field class="half-width">
+            <input matInput placeholder="" [value]="property.value"  (keyup)="updatePropertyValue(i, $event)">
+        </mat-form-field>
+        <button mat-icon-button (click)="removeProperty(i)"><mat-icon>cancel</mat-icon></button>
+      </mat-list-item>
+    </mat-list>
+    <button mat-icon-button (click)="addNewProperty()"><mat-icon>add</mat-icon></button>
+
+    <mat-form-field class="full-width">
+      <textarea matInput placeholder="Description"  [(ngModel)]="selectedCard.content" name="content"></textarea>
+    </mat-form-field>
+    <mat-form-field class="full-width">
+        <textarea matInput placeholder="At Higher Level"  [(ngModel)]="selectedCard.atHigherLevel" name="atHigherLevel"></textarea>
+      </mat-form-field>
+</form>
+
+<app-spell-card-detail [card]="selectedCard"></app-spell-card-detail>

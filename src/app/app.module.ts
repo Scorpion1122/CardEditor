@@ -9,8 +9,9 @@ import { MatToolbarModule } from '@angular/material';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
-import { MatChipsModule } from '@angular/material/chips'; 
-import {MatFormFieldModule} from '@angular/material/form-field'; 
+import { MatChipsModule } from '@angular/material/chips';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatListModule } from '@angular/material/list';
 
 import { AppComponent } from './app.component';
 import { HeroesComponent } from './components/heroes/heroes.component';
@@ -19,6 +20,7 @@ import { MessagesComponent } from './components/messages/messages.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HeaderComponent } from './components/header/header.component';
 import { CardCollectionComponent } from './components/card-collection/card-collection.component';
+import { CardEditorComponent } from './components/card-editor/card-editor.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,8 @@ import { CardCollectionComponent } from './components/card-collection/card-colle
     SpellCardDetailComponent,
     MessagesComponent,
     HeaderComponent,
-    CardCollectionComponent
+    CardCollectionComponent,
+    CardEditorComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +43,8 @@ import { CardCollectionComponent } from './components/card-collection/card-colle
     MatTableModule,
     MatChipsModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,24 @@
+form {
+  margin: 0 1em;
+  width: 30em;
+  float: left;
+  display: inline;
+}
+
+app-spell-card-detail {
+  float: right;
+  margin: 0 1em;
+  display: inline;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.half-width {
+  width: 50%;
+}
+
+.mat-input-element {
+  color: black;
+}

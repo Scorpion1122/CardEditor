@@ -11,8 +11,9 @@ import { MatTableDataSource} from '@angular/material';
 
 export class CardCollectionComponent implements OnInit {
 
-  displayedColumns: string[] = ['name', 'subTitle', 'tags'];
+  displayedColumns: string[] = ['name', 'subTitle', 'tags', 'edit'];
   dataSource: MatTableDataSource<Card>;
+  filterValue: string;
 
   constructor(private cardService: CardService) {
   }
@@ -26,7 +27,21 @@ export class CardCollectionComponent implements OnInit {
     this.dataSource = new MatTableDataSource(cards);
   }
 
+  selectTag(tag: string) {
+    this.filterValue = tag;
+    this.applyFilter(tag);
+  }
+
+  clearFilter() {
+    this.filterValue = '';
+    this.applyFilter('');
+  }
+
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  editCard(card: Card) {
+
   }
 }

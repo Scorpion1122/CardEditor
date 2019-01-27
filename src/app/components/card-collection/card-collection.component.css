@@ -16,7 +16,12 @@
     border-radius: 12px;
 }
 
+.edit-button {
+  width: 0.5em;
+}
+
 .filter {
-    width: 100%;
-    margin: 0 12px 0 12px;
+    width: 33%;
+    float: right;
+    margin: 0 2.5%;
 }

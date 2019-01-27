@@ -27,7 +27,7 @@
   font-variant:small-caps;
 }
 .sub-title {
-  padding-top: 0.5mm;
+  margin-top: -1mm;
   color: black;
   font-size: 3mm;
   font-style: italic;

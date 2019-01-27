@@ -20,4 +20,9 @@ export class CardService {
     });
     return observable;
   }
+
+  getCard(id: number): Observable<Card> {
+    const card = CARDS.find(x => x.id === id);
+    return of(card);
+  }
 }

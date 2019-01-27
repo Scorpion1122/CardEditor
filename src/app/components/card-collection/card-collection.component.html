@@ -1,17 +1,20 @@
 <mat-form-field class="filter">
-    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+    <input matInput (keyup)="applyFilter($event.target.value)" [(ngModel)]="filterValue" placeholder="Filter">
+    <button mat-button *ngIf="filterValue" matSuffix mat-icon-button aria-label="Clear" (click)="clearFilter()">
+      <mat-icon>close</mat-icon>
+    </button>
 </mat-form-field>
 
 <table mat-table [dataSource]="dataSource">
     <!--- Note that these columns can be defined in any order.
           The actual rendered columns are set as a property on the row definition" -->
-  
+
     <!-- Name Column -->
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef> Name </th>
       <td mat-cell *matCellDef="let element"> {{element.name}} </td>
     </ng-container>
-  
+
     <!-- Sub Title Column -->
     <ng-container matColumnDef="subTitle">
       <th mat-header-cell *matHeaderCellDef> Sub Title </th>
@@ -24,12 +27,22 @@
         <td mat-cell *matCellDef="let element">
 
             <mat-chip-list>
-                <mat-chip *ngFor="let tag of element.tags">{{ tag }}</mat-chip>
+                <mat-chip *ngFor="let tag of element.tags" (click)="selectTag(tag)">{{ tag }}</mat-chip>
             </mat-chip-list>
 
-        </td>        
+        </td>
       </ng-container>
-  
+
+    <!-- Edit Column -->
+    <ng-container matColumnDef="edit">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let element" class="edit-button">
+        <button mat-button mat-icon-button [routerLink]="['/card', element.id]">
+          <mat-icon>edit</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table>  
+  </table>
