@@ -5,6 +5,8 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { CardProperty } from 'src/app/models/card.property';
+import {COMMA, ENTER} from '@angular/cdk/keycodes';
+import {MatChipInputEvent} from '@angular/material';
 
 @Component({
   selector: 'app-card-editor',
@@ -12,6 +14,8 @@ import { CardProperty } from 'src/app/models/card.property';
   styleUrls: ['./card-editor.component.css']
 })
 export class CardEditorComponent implements OnInit, OnDestroy {
+
+  readonly separatorKeysCodes: number[] = [ENTER, COMMA];
 
   selectedCard: Card;
   getCardObservable: Observable<Card>;
@@ -48,6 +52,15 @@ export class CardEditorComponent implements OnInit, OnDestroy {
 
   updatePropertyValue(index: number, event) {
     this.selectedCard.properties[index].value = event.target.value;
+  }
+
+  removeTag(index: number) {
+    this.selectedCard.tags.splice(index, 1);
+  }
+
+  addTag(event: MatChipInputEvent) {
+    this.selectedCard.tags.push(event.value);
+    event.input.value = '';
   }
 
   ngOnDestroy(): void {
