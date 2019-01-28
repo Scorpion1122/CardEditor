@@ -38,6 +38,7 @@
   font-size: 3mm;
   padding: 0;
   margin: 2mm 0 1mm 0;
+  font-family: 'Noto Sans', 'Myriad Pro', Calibri, Helvetica, Arial, sans-serif;
 }
 .property-name {
   margin-right: 1mm;
@@ -52,6 +53,7 @@
   color: black;
   font-size: 3mm;
   padding-top: 1mm;
+  font-family: 'Noto Sans', 'Myriad Pro', Calibri, Helvetica, Arial, sans-serif;
 }
 .at-higher-levels {
   width: 100%;
