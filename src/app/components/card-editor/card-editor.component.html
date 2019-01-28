@@ -44,6 +44,7 @@
   <app-spell-card-detail [card]="selectedCard"></app-spell-card-detail>
 </div>
 <div class="delete-card-container">
+    <button mat-raised-button color="accent" (click)="goBack()">Save</button>
     <span class="fill"></span>
     <button mat-raised-button color="warn" (click)="deleteCard()">Delete Card</button>
 </div>

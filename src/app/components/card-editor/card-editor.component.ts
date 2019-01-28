@@ -68,8 +68,12 @@ export class CardEditorComponent implements OnInit, OnDestroy {
   deleteCard() {
     if (confirm('Are you sure you want to delete ' + this.selectedCard.name)) {
       this.cardService.deleteCard(this.selectedCard);
-      this.location.back();
+      this.goBack();
     }
+  }
+
+  goBack() {
+    this.location.back();
   }
 
   ngOnDestroy(): void {
