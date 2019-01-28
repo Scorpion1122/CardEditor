@@ -16,4 +16,8 @@ export class HeaderComponent implements OnInit {
   exportCardData() {
     this.exportImportService.exportCardData();
   }
+
+  createNewCard() {
+    
+  }
 }

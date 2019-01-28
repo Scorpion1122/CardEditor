@@ -2,6 +2,13 @@
     width: 100%;
 }
 
+.tags-header {
+    display: flex;
+}
+
+.tags-title {
+}
+
 .tag-form-field {
     width: 100%;
 }
@@ -20,8 +27,11 @@
   width: 0.5em;
 }
 
+.add-button {
+}
+
 .filter {
     width: 33%;
-    float: right;
     margin: 0 2.5%;
+    float: right;
 }

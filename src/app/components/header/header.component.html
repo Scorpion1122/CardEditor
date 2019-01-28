@@ -3,8 +3,9 @@
     <span class="header-title">Spell Card Editor</span>
     <span class="fill"></span>
     <span class="header-buttons">
+      <button mat-raised-button color="accent" class="new-card" (click)="createNewCard">New Card</button>
       <button mat-raised-button color="accent" routerLink="/collection">Collection</button>
-      <button mat-raised-button color="accent" routerLink="/deck">Deck</button>
+      <button mat-raised-button color="accent" routerLink="/deck">Deck</button>      
       <button mat-icon-button><mat-icon>print</mat-icon></button>
       <button mat-icon-button (click)="exportCardData()"><mat-icon>save</mat-icon></button>
   </span>
