@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import {MatInputModule} from '@angular/material';
 
-//Material Support
+// Material Support
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material';
 import { MatButtonModule } from '@angular/material/button';
@@ -21,6 +21,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { HeaderComponent } from './components/header/header.component';
 import { CardCollectionComponent } from './components/card-collection/card-collection.component';
 import { CardEditorComponent } from './components/card-editor/card-editor.component';
+import { PrintPageComponent } from './components/print-page/print-page.component';
+import { PrintablePageDirective } from './directives/printable-page.directive';
+import { PrintDocumentComponent } from './components/print-document/print-document.component';
+import { SpellCardDetailDirective } from './directives/spell-card-detail.directive';
 
 @NgModule({
   declarations: [
@@ -30,7 +34,11 @@ import { CardEditorComponent } from './components/card-editor/card-editor.compon
     MessagesComponent,
     HeaderComponent,
     CardCollectionComponent,
-    CardEditorComponent
+    CardEditorComponent,
+    PrintPageComponent,
+    PrintablePageDirective,
+    PrintDocumentComponent,
+    SpellCardDetailDirective
   ],
   imports: [
     BrowserModule,

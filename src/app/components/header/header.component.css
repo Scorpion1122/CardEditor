@@ -30,3 +30,9 @@ button {
 .header-buttons {
     margin: auto;
 }
+
+@media print {
+  .header {
+    display: none;
+   }
+}
