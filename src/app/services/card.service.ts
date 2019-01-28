@@ -13,6 +13,17 @@ export class CardService {
   constructor(private messageService: MessageService) {
   }
 
+  createNewCard(): Observable<Card> {
+    let newCard: Card = new Card();
+    for (let card of CARDS) {
+      if (card.id <= newCard.id) {
+        newCard.id = card.id + 1;
+      }
+    }
+    CARDS.push(newCard);
+    return of(newCard);
+  }
+
   getCards(): Observable<Card[]> {
     const observable = of(CARDS);
     observable.subscribe(cards => {

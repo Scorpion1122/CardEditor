@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ExportImportService } from 'src/app/services/export-import.service';
+import { CardService } from '../../services/card.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -8,7 +10,11 @@ import { ExportImportService } from 'src/app/services/export-import.service';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private exportImportService: ExportImportService) { }
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private exportImportService: ExportImportService,
+    private cardService: CardService) { }
 
   ngOnInit() {
   }
@@ -18,6 +24,8 @@ export class HeaderComponent implements OnInit {
   }
 
   createNewCard() {
-    
+    this.cardService.createNewCard()
+    .subscribe(card => 
+      this.router.navigate(['/card/' + card.id], { relativeTo: this.route}));
   }
 }
