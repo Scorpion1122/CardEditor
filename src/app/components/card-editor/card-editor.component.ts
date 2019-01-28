@@ -1,12 +1,13 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Location } from '@angular/common';
 import { Card } from 'src/app/models/card';
 import { CardService } from '../../services/card.service';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { CardProperty } from 'src/app/models/card.property';
-import {COMMA, ENTER} from '@angular/cdk/keycodes';
-import {MatChipInputEvent} from '@angular/material';
+import { COMMA, ENTER } from '@angular/cdk/keycodes';
+import { MatChipInputEvent } from '@angular/material';
 
 @Component({
   selector: 'app-card-editor',
@@ -21,6 +22,7 @@ export class CardEditorComponent implements OnInit, OnDestroy {
   getCardObservable: Observable<Card>;
 
   constructor(
+    private location: Location,
     private route: ActivatedRoute,
     private router: Router,
     private cardService: CardService) {
@@ -63,7 +65,13 @@ export class CardEditorComponent implements OnInit, OnDestroy {
     event.input.value = '';
   }
 
-  ngOnDestroy(): void {
+  deleteCard() {
+    if (confirm('Are you sure you want to delete ' + this.selectedCard.name)) {
+      this.cardService.deleteCard(this.selectedCard);
+      this.location.back();
+    }
   }
 
+  ngOnDestroy(): void {
+  }
 }

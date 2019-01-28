@@ -14,8 +14,8 @@ export class CardService {
   }
 
   createNewCard(): Observable<Card> {
-    let newCard: Card = new Card();
-    for (let card of CARDS) {
+    const newCard: Card = new Card();
+    for (const card of CARDS) {
       if (card.id <= newCard.id) {
         newCard.id = card.id + 1;
       }
@@ -35,5 +35,10 @@ export class CardService {
   getCard(id: number): Observable<Card> {
     const card = CARDS.find(x => x.id === id);
     return of(card);
+  }
+
+  deleteCard(card: Card) {
+    const index = CARDS.indexOf(card);
+    CARDS.splice(index, 1);
   }
 }
