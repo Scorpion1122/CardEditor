@@ -1,6 +1,8 @@
 import { Component, OnInit, ComponentFactoryResolver, ViewChild } from '@angular/core';
 import { PrintPageComponent } from '../print-page/print-page.component';
 import { PrintablePageDirective } from 'src/app/directives/printable-page.directive';
+import { CARDS } from '../../models/mock-cards';
+import { Card } from '../../models/card';
 
 @Component({
   selector: 'app-print-document',
@@ -11,6 +13,7 @@ import { PrintablePageDirective } from 'src/app/directives/printable-page.direct
 export class PrintDocumentComponent implements OnInit {
 
   @ViewChild(PrintablePageDirective) printDirective: PrintablePageDirective;
+  cards: Card[] = CARDS;
 
   constructor(private componentFactoryResolver: ComponentFactoryResolver) { }
 
@@ -19,8 +22,11 @@ export class PrintDocumentComponent implements OnInit {
     const viewContainerRef = this.printDirective.viewContainerRef;
     viewContainerRef.clear();
 
-    let componentRef = viewContainerRef.createComponent(componentFactory);
-    componentRef = viewContainerRef.createComponent(componentFactory);
+    const pageCount = Math.ceil(this.cards.length / 9);
+    for (var i = 0; i < pageCount; i++) {
+      const componentRef = viewContainerRef.createComponent(componentFactory);
+      (<PrintPageComponent>componentRef.instance).cards = this.cards.slice(i * 9, i * 9 + 9);
+    }
   }
 
 }
