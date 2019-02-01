@@ -23,6 +23,10 @@ export class HeaderComponent implements OnInit {
     this.exportImportService.exportCardData();
   }
 
+  importCardData(changeEvent) {
+    this.exportImportService.importCardData(changeEvent.target.files[0]);
+  }
+
   createNewCard() {
     this.cardService.createNewCard()
     .subscribe(card =>

@@ -23,7 +23,7 @@ export class PrintDocumentComponent implements OnInit {
     viewContainerRef.clear();
 
     const pageCount = Math.ceil(this.cards.length / 9);
-    for (var i = 0; i < pageCount; i++) {
+    for (let i = 0; i < pageCount; i++) {
       const componentRef = viewContainerRef.createComponent(componentFactory);
       (<PrintPageComponent>componentRef.instance).cards = this.cards.slice(i * 9, i * 9 + 9);
     }

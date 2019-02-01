@@ -5,9 +5,12 @@
     <span class="header-buttons">
       <button mat-raised-button color="accent" class="new-card" (click)="createNewCard()">New Card</button>
       <button mat-raised-button color="accent" routerLink="/collection">Collection</button>
-      <button mat-raised-button color="accent" routerLink="/deck">Deck</button>      
+      <button mat-raised-button color="accent" routerLink="/deck">Deck</button>
       <button mat-icon-button  routerLink="/print"><mat-icon>print</mat-icon></button>
-      <button mat-icon-button (click)="exportCardData()"><mat-icon>save</mat-icon></button>
+      <button mat-icon-button (click)="exportCardData()"><mat-icon>cloud_download</mat-icon></button>
+
+      <input style="display: none" type="file" (change)="importCardData($event)" #fileInput>
+      <button mat-icon-button (click)="fileInput.click()"><mat-icon>cloud_upload</mat-icon></button>
   </span>
   </div>
 </mat-toolbar>
