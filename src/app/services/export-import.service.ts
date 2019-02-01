@@ -9,8 +9,6 @@ import { CardProperty } from '../models/card.property';
 })
 export class ExportImportService {
 
-  cards: Card[] = [];
-
   constructor(private cardService: CardService) {
    }
 
@@ -32,6 +30,8 @@ export class ExportImportService {
    }
 
    importJsonCardData(json: string) {
+    const newCards = [];
+
     const data = JSON.parse(json);
     for (const cardData of data) {
       if (typeof cardData.name === 'undefined') {
@@ -55,7 +55,8 @@ export class ExportImportService {
         }
       }
 
-      console.log(card);
+      newCards.push(card);
     }
+    this.cardService.setCards(newCards);
    }
 }

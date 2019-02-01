@@ -10,22 +10,24 @@ import { CARDS } from '../models/mock-cards';
 })
 export class CardService {
 
+  cards: Card[] = CARDS;
+
   constructor(private messageService: MessageService) {
   }
 
   createNewCard(): Observable<Card> {
     const newCard: Card = new Card();
-    for (const card of CARDS) {
+    for (const card of this.cards) {
       if (card.id <= newCard.id) {
         newCard.id = card.id + 1;
       }
     }
-    CARDS.push(newCard);
+    this.cards.push(newCard);
     return of(newCard);
   }
 
   getCards(): Observable<Card[]> {
-    const observable = of(CARDS);
+    const observable = of(this.cards);
     observable.subscribe(cards => {
       this.messageService.add('CardService: fetched cards!');
     });
@@ -33,12 +35,19 @@ export class CardService {
   }
 
   getCard(id: number): Observable<Card> {
-    const card = CARDS.find(x => x.id === id);
+    const card = this.cards.find(x => x.id === id);
     return of(card);
   }
 
+  setCards(newCards: Card[]) {
+    this.cards.splice(0, this.cards.length);
+    for (const card of newCards) {
+      this.cards.push(card);
+    }
+  }
+
   deleteCard(card: Card) {
-    const index = CARDS.indexOf(card);
-    CARDS.splice(index, 1);
+    const index = this.cards.indexOf(card);
+    this.cards.splice(index, 1);
   }
 }
