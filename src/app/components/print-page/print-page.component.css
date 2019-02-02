@@ -7,20 +7,23 @@
 
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  align-content: center;
+  justify-content: space-around;
+  /*align-content: center;*/
   flex-direction: row;
 
-  -webkit-print-color-adjust: exact;
+  border-bottom-color: gray;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
 }
 
 @page {
   margin: 0;
+  padding: 0;
 }
 
 @media print {
    .page {
+      border-bottom-style: none;
       width: 100%;
-      height: 100%;
    }
 }

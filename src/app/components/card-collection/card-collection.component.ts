@@ -2,6 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Card } from '../../models/card';
 import { CardService } from '../../services/card.service';
 import { MatTableDataSource} from '@angular/material';
+import { SelectionModel } from '@angular/cdk/collections';
+import { DeckService } from 'src/app/services/deck.service';
 
 @Component({
   selector: 'app-card-collection',
@@ -11,16 +13,27 @@ import { MatTableDataSource} from '@angular/material';
 
 export class CardCollectionComponent implements OnInit {
 
-  displayedColumns: string[] = ['name', 'subTitle', 'tags', 'edit'];
+  displayedColumns: string[] = ['select', 'name', 'subTitle', 'tags', 'edit'];
   dataSource: MatTableDataSource<Card>;
+  selection: SelectionModel<Card>;
   filterValue: string;
 
-  constructor(private cardService: CardService) {
+  constructor(private cardService: CardService, private deckService: DeckService) {
+    this.selection = new SelectionModel<Card>(true, []);
+    this.selection.onChange.subscribe(_ => {});
   }
 
   ngOnInit() {
     this.cardService.getCards()
       .subscribe(cards => this.onCardsRetrieved(cards));
+
+    this.deckService.getCardsInCurrentDeck()
+      .subscribe(cards => {
+        this.selection.clear();
+        for (const card of cards) {
+          this.selection.select(card);
+        }
+      });
   }
 
   onCardsRetrieved(cards: Card[]) {

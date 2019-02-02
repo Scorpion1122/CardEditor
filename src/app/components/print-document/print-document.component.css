@@ -2,10 +2,6 @@
   background-color: rgb(225, 225, 225, 225);
 }
 
-@page {
-  margin: 0;
-}
-
 @media print {
    .print-preview-container {
       background-color: white;
