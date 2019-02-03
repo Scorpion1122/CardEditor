@@ -14,6 +14,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatListModule } from '@angular/material/list';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 
+// External
+import { BytelabsColorSelectorModule } from '@bytelabsco/ngx-color-selector'; // https://github.com/bytelabsco/ngx-color-selector
+
 import { AppComponent } from './app.component';
 import { HeroesComponent } from './components/heroes/heroes.component';
 import { SpellCardDetailComponent } from './components/spell-card-detail/spell-card-detail.component';
@@ -54,7 +57,8 @@ import { SpellCardDetailDirective } from './directives/spell-card-detail.directi
     MatFormFieldModule,
     MatInputModule,
     MatListModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    BytelabsColorSelectorModule
   ],
   providers: [],
   bootstrap: [AppComponent]

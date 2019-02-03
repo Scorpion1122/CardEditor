@@ -1,4 +1,5 @@
 import { CardProperty } from './card.property';
+import { Color } from './color';
 
 export class Card {
     id: number;
@@ -7,7 +8,7 @@ export class Card {
     properties: CardProperty[];
     content: string;
     atHigherLevel: string;
-    borderColor: string;
+    borderColor: Color;
     tags: string[];
 
     constructor() {
@@ -17,7 +18,7 @@ export class Card {
         this.properties = [];
         this.content = '';
         this.atHigherLevel = '';
-        this.borderColor = '#444444';
+        this.borderColor = new Color('#444444');
         this.tags = [];
     }
 }

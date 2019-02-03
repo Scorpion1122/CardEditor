@@ -28,7 +28,7 @@
           name="content"
           cdkTextareaAutosize
           #autosize="cdkTextareaAutosize"
-          cdkAutosizeMinRows="2"></textarea>
+          cdkAutosizeMinRows="1"></textarea>
       </mat-form-field>
 
       <mat-form-field class="full-width">
@@ -39,12 +39,13 @@
             name="atHigherLevel"
             cdkTextareaAutosize
             #autosize="cdkTextareaAutosize"
-            cdkAutosizeMinRows="2"></textarea>
+            cdkAutosizeMinRows="1"></textarea>
       </mat-form-field>
 
-      <mat-form-field class="full-width">
-        <input matInput placeholder="Border Color" [(ngModel)]="selectedCard.borderColor" name="borderColor" type="color">
-      </mat-form-field>
+      <div class="full-width">
+          <label>Background Color: </label>
+          <bytelabs-color-selector [(color)]="selectedCard.borderColor"></bytelabs-color-selector>
+      </div>
 
       <mat-form-field class="full-width">
         <mat-chip-list #tagList>
@@ -58,7 +59,6 @@
             (matChipInputTokenEnd)="addTag($event)">
       </mat-form-field>
   </form>
-
   <app-spell-card-detail [card]="selectedCard"></app-spell-card-detail>
 </div>
 <div class="delete-card-container">

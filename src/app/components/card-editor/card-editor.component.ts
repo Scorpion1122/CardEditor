@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
 import { CardProperty } from 'src/app/models/card.property';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { MatChipInputEvent } from '@angular/material';
+import { IColor } from '@bytelabsco/ngx-color-selector';
 
 @Component({
   selector: 'app-card-editor',
@@ -33,7 +34,10 @@ export class CardEditorComponent implements OnInit, OnDestroy {
       switchMap((params: ParamMap) =>
         this.cardService.getCard(+params.get('id')))
     );
-    this.getCardObservable.subscribe(card => this.selectedCard = card);
+    this.getCardObservable.subscribe(card => {
+      this.selectedCard = card;
+      console.log(this.selectedCard.borderColor.hex);
+    });
   }
 
   removeProperty(index: number) {
