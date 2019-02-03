@@ -6,7 +6,7 @@ export class Deck {
   constructor() {
     this.id = 1;
     this.name = 'New Deck';
-    this.selection = [11];
+    this.selection = [];
 }
 
   clearSelection() {

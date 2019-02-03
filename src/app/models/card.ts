@@ -7,6 +7,7 @@ export class Card {
     properties: CardProperty[];
     content: string;
     atHigherLevel: string;
+    borderColor: string;
     tags: string[];
 
     constructor() {
@@ -16,6 +17,7 @@ export class Card {
         this.properties = [];
         this.content = '';
         this.atHigherLevel = '';
+        this.borderColor = '#444444';
         this.tags = [];
     }
 }

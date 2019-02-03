@@ -46,6 +46,10 @@ export class ExportImportService {
       card.atHigherLevel = cardData.atHigherLevel;
       card.tags = cardData.tags;
 
+      if (typeof cardData.borderColor !== 'undefined') {
+        card.borderColor = cardData.borderColor;
+      }
+
       if (typeof cardData.properties !== 'undefined') {
         for (const propertyData of cardData.properties) {
           const property = new CardProperty();

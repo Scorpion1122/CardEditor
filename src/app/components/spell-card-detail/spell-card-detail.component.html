@@ -1,5 +1,5 @@
 <div class="card-size-poker">
-  <div *ngIf="card" class="background-border">
+  <div *ngIf="card" class="background-border" [ngStyle]="{'background-color': card.borderColor}">
     <div class="background">
       <div class="content-container">
         <div class="title">{{ card.name }}</div>
