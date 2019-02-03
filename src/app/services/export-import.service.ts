@@ -3,6 +3,7 @@ import { CardService } from './card.service';
 import * as FileSaver from 'file-saver';
 import { Card } from '../models/card';
 import { CardProperty } from '../models/card.property';
+import { Color } from '../models/color';
 
 @Injectable({
   providedIn: 'root'
@@ -46,8 +47,9 @@ export class ExportImportService {
       card.atHigherLevel = cardData.atHigherLevel;
       card.tags = cardData.tags;
 
-      if (typeof cardData.borderColor !== 'undefined') {
-        card.borderColor = cardData.borderColor;
+      if (typeof cardData.borderColor !== 'undefined'
+        && typeof cardData.borderColor.hex !== 'undefined') {
+        card.borderColor.hex = cardData.borderColor.hex;
       }
 
       if (typeof cardData.properties !== 'undefined') {
