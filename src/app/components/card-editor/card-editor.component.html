@@ -43,6 +43,10 @@
       </mat-form-field>
 
       <mat-form-field class="full-width">
+        <input matInput placeholder="Border Color" [(ngModel)]="selectedCard.borderColor" name="borderColor" type="color">
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
         <mat-chip-list #tagList>
           <mat-chip *ngFor="let tag of selectedCard.tags; let i = index" (removed)="removeTag(i)">
             {{tag}}
