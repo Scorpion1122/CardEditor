@@ -20,7 +20,6 @@ export class CardCollectionComponent implements OnInit {
 
   constructor(private cardService: CardService, private deckService: DeckService) {
     this.selection = new SelectionModel<Card>(true, []);
-    this.selection.onChange.subscribe(_ => {});
   }
 
   ngOnInit() {
@@ -34,6 +33,13 @@ export class CardCollectionComponent implements OnInit {
           this.selection.select(card);
         }
       });
+    this.selection.changed.subscribe(selectionChange => {
+      this.onSelectionChange();
+    });
+  }
+
+  onSelectionChange() {
+    this.deckService.setCardsInDeck(this.selection.selected);
   }
 
   onCardsRetrieved(cards: Card[]) {
