@@ -20,19 +20,16 @@ export class CardCollectionComponent implements OnInit {
 
   constructor(private cardService: CardService, private deckService: DeckService) {
     this.selection = new SelectionModel<Card>(true, []);
+    this.dataSource = new MatTableDataSource();
   }
 
   ngOnInit() {
     this.cardService.getCards()
       .subscribe(cards => this.onCardsRetrieved(cards));
+    this.cardService.cardsUpdated.subscribe(cards => {
+      this.onCardsRetrieved(cards);
+    });
 
-    this.deckService.getCardsInCurrentDeck()
-      .subscribe(cards => {
-        this.selection.clear();
-        for (const card of cards) {
-          this.selection.select(card);
-        }
-      });
     this.selection.changed.subscribe(selectionChange => {
       this.onSelectionChange();
     });
@@ -43,7 +40,15 @@ export class CardCollectionComponent implements OnInit {
   }
 
   onCardsRetrieved(cards: Card[]) {
-    this.dataSource = new MatTableDataSource(cards);
+    this.dataSource.data = cards;
+
+    this.deckService.getCardsInCurrentDeck()
+      .subscribe(cardsInDeck => {
+        this.selection.clear();
+        for (const card of cardsInDeck) {
+          this.selection.select(card);
+        }
+      });
   }
 
   selectTag(tag: string) {

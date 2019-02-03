@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Card } from '../models/card';
-import { Observable, of } from 'rxjs';
+import { Observable, of, Subject } from 'rxjs';
 import { MessageService } from './message.service';
 
 import { CARDS } from '../models/mock-cards';
@@ -11,8 +11,10 @@ import { CARDS } from '../models/mock-cards';
 export class CardService {
 
   cards: Card[] = CARDS;
+  cardsUpdated: Subject<Card[]>;
 
   constructor(private messageService: MessageService) {
+    this.cardsUpdated = new Subject<Card[]>();
   }
 
   createNewCard(): Observable<Card> {
@@ -44,6 +46,7 @@ export class CardService {
     for (const card of newCards) {
       this.cards.push(card);
     }
+    this.cardsUpdated.next(this.cards);
   }
 
   deleteCard(card: Card) {
