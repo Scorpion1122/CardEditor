@@ -1,6 +1,7 @@
 <div class="card-size-poker">
   <div *ngIf="card" class="background-border" [ngStyle]="{'background-color': card.borderColor.hex}">
     <div class="background">
+        <div class="watermark"><mat-icon svgIcon="/assets/icons/abstract-012.svg"></mat-icon></div>
       <div class="content-container">
         <div class="title">{{ card.name }}</div>
         <div class="sub-title">{{ card.subTitle }}</div>

@@ -71,3 +71,20 @@ pre {
   word-wrap: break-word;       /* Internet Explorer 5.5+ */
   margin: 0;
 }
+.watermark {
+  position: absolute;
+  width: 20mm;
+  height: 20mm;
+  background-size: 20mm 20mm;
+  background-repeat: no-repeat;
+  margin: 2mm 0 0 38mm;
+}
+
+.icon {
+  width: 20mm;
+  height: 20mm;
+}
+
+/*
+background: url(/assets/icons/abstract-012.png);
+  mask-image: url(/assets/icons/abstract-012.png); */
