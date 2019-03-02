@@ -14,6 +14,13 @@ Run `ng generate component component-name` to generate a new component. You can 
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
+Step 1. Run a build
+ng build --prod --base-href "https://scorpion1122.github.io/CardEditor/" --output-path dist
+
+Step 2. Checkout master branch
+Step 3. Move files in the dist folder to the root
+Step 4. Commit all changed files
+
 ## Running unit tests
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
