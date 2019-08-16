@@ -20,7 +20,7 @@ export const CARDS: Card[] = [
         'Spell',
         '1st Level'
       ],
-      layoutText: '',
+      layoutText: 'title Eldritch Blast',
     },
     {
       id: 12,
@@ -38,6 +38,6 @@ export const CARDS: Card[] = [
         'Paladin',
         'Feature'
       ],
-      layoutText: '',
+      layoutText: 'title Turn the Faithless',
     }
 ];
