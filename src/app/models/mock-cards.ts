@@ -19,7 +19,8 @@ export const CARDS: Card[] = [
         'Cantrip',
         'Spell',
         '1st Level'
-      ]
+      ],
+      layoutText: '',
     },
     {
       id: 12,
@@ -36,6 +37,7 @@ export const CARDS: Card[] = [
       tags: [
         'Paladin',
         'Feature'
-      ]
+      ],
+      layoutText: '',
     }
 ];
