@@ -32,6 +32,7 @@ import { SpellCardDetailDirective } from './directives/spell-card-detail.directi
 import { CardTitleComponent } from './components/card-elements/card-title/card-title.component';
 import { InsertContainerDirective } from './directives/insert-container.directive';
 import { CardSubtitleComponent } from './components/card-elements/card-subtitle/card-subtitle.component';
+import { CardRuleComponent } from './components/card-elements/card-rule/card-rule.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { CardSubtitleComponent } from './components/card-elements/card-subtitle/
     SpellCardDetailDirective,
     CardTitleComponent,
     InsertContainerDirective,
-    CardSubtitleComponent
+    CardSubtitleComponent,
+    CardRuleComponent
   ],
   imports: [
     BrowserModule,
