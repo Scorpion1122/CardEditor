@@ -79,7 +79,8 @@ export class CardEditorComponent implements OnInit, OnDestroy {
     }
   }
 
-  cardLayoutChange() {
+  cardLayoutChange(input) {
+    console.log(input);
     this.cardComponent.parseAndCreateLayoutContent();
   }
 

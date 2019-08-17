@@ -4,6 +4,9 @@ import { InsertContainerDirective } from 'src/app/directives/insert-container.di
 import { CardTitleComponent } from '../card-elements/card-title/card-title.component';
 import { CardSubtitleComponent } from '../card-elements/card-subtitle/card-subtitle.component';
 import { CardRuleComponent } from '../card-elements/card-rule/card-rule.component';
+import { CardAttributeComponent } from '../card-elements/card-attribute/card-attribute.component';
+import { CardSpaceComponent } from '../card-elements/card-space/card-space.component';
+import { CardHeadingComponent } from '../card-elements/card-heading/card-heading.component';
 
 @Component({
   selector: 'app-spell-card-detail',
@@ -12,7 +15,10 @@ import { CardRuleComponent } from '../card-elements/card-rule/card-rule.componen
   entryComponents: [
     CardTitleComponent,
     CardSubtitleComponent,
-    CardRuleComponent ]
+    CardRuleComponent,
+    CardAttributeComponent,
+    CardSpaceComponent,
+    CardHeadingComponent ]
 })
 
 export class SpellCardDetailComponent implements OnInit {
@@ -30,7 +36,8 @@ export class SpellCardDetailComponent implements OnInit {
     const viewContainerRef = this.insertDirective.viewContainerRef;
     viewContainerRef.clear();
 
-    const lines = this.card.layoutText.split('\n');
+    const layoutText = this.card.layoutText.trim();
+    const lines = layoutText.split('\n');
     for (let i = 0; i < lines.length; i++) {
       const line = lines[i];
 
@@ -51,29 +58,40 @@ export class SpellCardDetailComponent implements OnInit {
 
     console.log(command);
     switch (command) {
-      default:
-        // Error
-        break;
       case 'title':
         componentFactory = this.componentFactoryResolver.resolveComponentFactory(CardTitleComponent);
         componentRef = container.createComponent(componentFactory);
         (<CardTitleComponent>componentRef.instance).content = content;
-        break;
-      case 'rule':
-        componentFactory = this.componentFactoryResolver.resolveComponentFactory(CardRuleComponent);
-        container.createComponent(componentFactory);
         break;
       case 'subtitle':
         componentFactory = this.componentFactoryResolver.resolveComponentFactory(CardSubtitleComponent);
         componentRef = container.createComponent(componentFactory);
         (<CardSubtitleComponent>componentRef.instance).content = content;
         break;
+      case 'rule':
+        componentFactory = this.componentFactoryResolver.resolveComponentFactory(CardRuleComponent);
+        container.createComponent(componentFactory);
+        break;
       case 'attribute':
+        componentFactory = this.componentFactoryResolver.resolveComponentFactory(CardAttributeComponent);
+        componentRef = container.createComponent(componentFactory);
+        (<CardAttributeComponent>componentRef.instance).parseContent(content);
         break;
       case 'heading':
+        componentFactory = this.componentFactoryResolver.resolveComponentFactory(CardHeadingComponent);
+        componentRef = container.createComponent(componentFactory);
+        (<CardHeadingComponent>componentRef.instance).parseContent(content);
         break;
       case 'text':
         break;
+      default:
+      case '':
+      case 'space':
+        componentFactory = this.componentFactoryResolver.resolveComponentFactory(CardSpaceComponent);
+        componentRef = container.createComponent(componentFactory);
+        (<CardSpaceComponent>componentRef.instance).parseContent(content);
+      break;
+
     }
   }
 }

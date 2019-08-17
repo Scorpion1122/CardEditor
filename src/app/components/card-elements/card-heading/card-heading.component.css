@@ -1,0 +1,14 @@
+.heading-container {
+    padding: 1mm 0 2mm 0;
+    bottom: 0;
+    width: 100%;
+  }
+  .heading {
+    width: 100%;
+    color: #822000;
+  }
+  .line-break {
+    width: 100%;
+    height: 1px;
+    background-color: #822000;
+  }

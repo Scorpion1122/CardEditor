@@ -33,6 +33,9 @@ import { CardTitleComponent } from './components/card-elements/card-title/card-t
 import { InsertContainerDirective } from './directives/insert-container.directive';
 import { CardSubtitleComponent } from './components/card-elements/card-subtitle/card-subtitle.component';
 import { CardRuleComponent } from './components/card-elements/card-rule/card-rule.component';
+import { CardAttributeComponent } from './components/card-elements/card-attribute/card-attribute.component';
+import { CardSpaceComponent } from './components/card-elements/card-space/card-space.component';
+import { CardHeadingComponent } from './components/card-elements/card-heading/card-heading.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +53,10 @@ import { CardRuleComponent } from './components/card-elements/card-rule/card-rul
     CardTitleComponent,
     InsertContainerDirective,
     CardSubtitleComponent,
-    CardRuleComponent
+    CardRuleComponent,
+    CardAttributeComponent,
+    CardSpaceComponent,
+    CardHeadingComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,12 @@
+.attribute-container {
+    list-style-type: none;
+    color: black;
+    font-size: 3mm;
+    font-family: 'Noto Sans', 'Myriad Pro', Calibri, Helvetica, Arial, sans-serif;
+    display: flex;
+    flex-direction: row;
+  }
+.attribute-name {
+    margin-right: 1mm;
+    font-weight: bold;
+  }
