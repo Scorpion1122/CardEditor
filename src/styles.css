@@ -3,7 +3,7 @@
 
 @font-face {
     font-family: MrsEavesSmallCapsRegular;
-    src: url('/src/assets/fonts/MrsEavesSmallCaps-Regular.ttf') format("truetype");
+    src: url('assets/fonts/MrsEavesSmallCaps-Regular.ttf') format("truetype");
   }
 
 body {
@@ -15,8 +15,13 @@ body {
 }
 
 .card-size-poker {
-	width: 63.50mm;
-  height: 88.9mm;
+    width: 63.50mm;
+    height: 88.9mm;
+}
+
+.card-size-tarot {
+    width: 70mm;
+    height: 121mm;
 }
 
 .insert-element {

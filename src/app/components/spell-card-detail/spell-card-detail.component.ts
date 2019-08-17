@@ -8,6 +8,7 @@ import { CardAttributeComponent } from '../card-elements/card-attribute/card-att
 import { CardSpaceComponent } from '../card-elements/card-space/card-space.component';
 import { CardHeadingComponent } from '../card-elements/card-heading/card-heading.component';
 import { CardElementInterface } from '../card-elements/card-element.interface';
+import { CardTextComponent } from '../card-elements/card-text/card-text.component';
 
 @Component({
   selector: 'app-spell-card-detail',
@@ -19,7 +20,8 @@ import { CardElementInterface } from '../card-elements/card-element.interface';
     CardRuleComponent,
     CardAttributeComponent,
     CardSpaceComponent,
-    CardHeadingComponent ]
+    CardHeadingComponent,
+    CardTextComponent ]
 })
 
 export class SpellCardDetailComponent implements OnInit {
@@ -75,6 +77,7 @@ export class SpellCardDetailComponent implements OnInit {
         this.createInstanceAndPassContent(CardHeadingComponent, content, container);
         break;
       case 'text':
+      this.createInstanceAndPassContent(CardTextComponent, content, container);
         break;
       default:
       case '':

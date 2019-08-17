@@ -1,8 +1,9 @@
 <div class="card-size-poker">
   <div class="background-border" [ngStyle]="{'background-color': card.borderColor.hex}">
     <div class="background">
-      <div class="content-container" insert-container>
-        <div class="title">{{ card.name }}</div>
+      <div class="content-container">
+        <ng-container insert-container></ng-container>
+        <!-- <div class="title">{{ card.name }}</div>
         <div class="sub-title">{{ card.subTitle }}</div>
         <ul class="properties-container">
           <li *ngFor="let property of card.properties" class="card-properties">
@@ -14,7 +15,7 @@
           <div class="at-higher-levels">Higher Levels</div>
           <div class="line-break"></div>
           <div class="card-text">{{ card.atHigherLevel }}</div>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>

@@ -36,6 +36,7 @@ import { CardRuleComponent } from './components/card-elements/card-rule/card-rul
 import { CardAttributeComponent } from './components/card-elements/card-attribute/card-attribute.component';
 import { CardSpaceComponent } from './components/card-elements/card-space/card-space.component';
 import { CardHeadingComponent } from './components/card-elements/card-heading/card-heading.component';
+import { CardTextComponent } from './components/card-elements/card-text/card-text.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { CardHeadingComponent } from './components/card-elements/card-heading/ca
     CardRuleComponent,
     CardAttributeComponent,
     CardSpaceComponent,
-    CardHeadingComponent
+    CardHeadingComponent,
+    CardTextComponent
   ],
   imports: [
     BrowserModule,
