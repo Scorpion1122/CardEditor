@@ -5,10 +5,8 @@ import { CardService } from '../../services/card.service';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
-import { CardProperty } from 'src/app/models/card.property';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { MatChipInputEvent } from '@angular/material';
-import { IColor } from '@bytelabsco/ngx-color-selector';
 import { SpellCardDetailComponent } from '../spell-card-detail/spell-card-detail.component';
 
 @Component({
@@ -43,26 +41,6 @@ export class CardEditorComponent implements OnInit, OnDestroy {
     });
   }
 
-  removeProperty(index: number) {
-    this.selectedCard.properties.splice(index, 1);
-  }
-
-  addNewProperty() {
-    const newProperty: CardProperty = {
-      name: 'name',
-      value: 'value'
-    };
-    this.selectedCard.properties.push(newProperty);
-  }
-
-  updatePropertyName(index: number, event) {
-    this.selectedCard.properties[index].name = event.target.value;
-  }
-
-  updatePropertyValue(index: number, event) {
-    this.selectedCard.properties[index].value = event.target.value;
-  }
-
   removeTag(index: number) {
     this.selectedCard.tags.splice(index, 1);
   }
@@ -80,7 +58,6 @@ export class CardEditorComponent implements OnInit, OnDestroy {
   }
 
   cardLayoutChange(input) {
-    console.log(input);
     this.cardComponent.parseAndCreateLayoutContent();
   }
 
