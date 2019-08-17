@@ -1,11 +1,12 @@
-import { Component, ViewChild, ElementRef, Renderer2, AfterViewInit } from '@angular/core';
+import { Component, ViewChild, ElementRef, Renderer2 } from '@angular/core';
+import { CardElementInterface } from '../card-element.interface';
 
 @Component({
   selector: 'app-card-space',
   templateUrl: './card-space.component.html',
   styleUrls: ['./card-space.component.css']
 })
-export class CardSpaceComponent {
+export class CardSpaceComponent implements CardElementInterface {
 
   @ViewChild('spaceElement') spaceElement: ElementRef;
 

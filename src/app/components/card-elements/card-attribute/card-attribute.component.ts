@@ -1,11 +1,12 @@
 import { Component, Input } from '@angular/core';
+import { CardElementInterface } from '../card-element.interface';
 
 @Component({
   selector: 'app-card-attribute',
   templateUrl: './card-attribute.component.html',
   styleUrls: ['./card-attribute.component.css']
 })
-export class CardAttributeComponent {
+export class CardAttributeComponent implements CardElementInterface {
 
   @Input() name: string;
   @Input() description: string;

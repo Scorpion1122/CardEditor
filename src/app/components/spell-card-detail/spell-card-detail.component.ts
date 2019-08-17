@@ -7,6 +7,7 @@ import { CardRuleComponent } from '../card-elements/card-rule/card-rule.componen
 import { CardAttributeComponent } from '../card-elements/card-attribute/card-attribute.component';
 import { CardSpaceComponent } from '../card-elements/card-space/card-space.component';
 import { CardHeadingComponent } from '../card-elements/card-heading/card-heading.component';
+import { CardElementInterface } from '../card-elements/card-element.interface';
 
 @Component({
   selector: 'app-spell-card-detail',
@@ -54,44 +55,38 @@ export class SpellCardDetailComponent implements OnInit {
 
   processLayoutString(command: string, content: string, container: ViewContainerRef): void {
     let componentFactory;
-    let componentRef;
 
     console.log(command);
     switch (command) {
       case 'title':
-        componentFactory = this.componentFactoryResolver.resolveComponentFactory(CardTitleComponent);
-        componentRef = container.createComponent(componentFactory);
-        (<CardTitleComponent>componentRef.instance).content = content;
+        this.createInstanceAndPassContent(CardTitleComponent, content, container);
         break;
       case 'subtitle':
-        componentFactory = this.componentFactoryResolver.resolveComponentFactory(CardSubtitleComponent);
-        componentRef = container.createComponent(componentFactory);
-        (<CardSubtitleComponent>componentRef.instance).content = content;
+        this.createInstanceAndPassContent(CardSubtitleComponent, content, container);
         break;
       case 'rule':
         componentFactory = this.componentFactoryResolver.resolveComponentFactory(CardRuleComponent);
         container.createComponent(componentFactory);
         break;
       case 'attribute':
-        componentFactory = this.componentFactoryResolver.resolveComponentFactory(CardAttributeComponent);
-        componentRef = container.createComponent(componentFactory);
-        (<CardAttributeComponent>componentRef.instance).parseContent(content);
+        this.createInstanceAndPassContent(CardAttributeComponent, content, container);
         break;
       case 'heading':
-        componentFactory = this.componentFactoryResolver.resolveComponentFactory(CardHeadingComponent);
-        componentRef = container.createComponent(componentFactory);
-        (<CardHeadingComponent>componentRef.instance).parseContent(content);
+        this.createInstanceAndPassContent(CardHeadingComponent, content, container);
         break;
       case 'text':
         break;
       default:
       case '':
       case 'space':
-        componentFactory = this.componentFactoryResolver.resolveComponentFactory(CardSpaceComponent);
-        componentRef = container.createComponent(componentFactory);
-        (<CardSpaceComponent>componentRef.instance).parseContent(content);
+        this.createInstanceAndPassContent(CardSpaceComponent, content, container);
       break;
-
     }
+  }
+
+  createInstanceAndPassContent(component: any, content: string, container: ViewContainerRef): void {
+    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(component);
+    const componentRef = container.createComponent(componentFactory);
+    (<CardElementInterface>componentRef.instance).parseContent(content);
   }
 }
