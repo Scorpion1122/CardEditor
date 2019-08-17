@@ -30,6 +30,7 @@ import { PrintablePageDirective } from './directives/printable-page.directive';
 import { PrintDocumentComponent } from './components/print-document/print-document.component';
 import { SpellCardDetailDirective } from './directives/spell-card-detail.directive';
 import { CardTitleComponent } from './components/card-elements/card-title/card-title.component';
+import { InsertContainerDirective } from './directives/insert-container.directive';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { CardTitleComponent } from './components/card-elements/card-title/card-t
     PrintablePageDirective,
     PrintDocumentComponent,
     SpellCardDetailDirective,
-    CardTitleComponent
+    CardTitleComponent,
+    InsertContainerDirective
   ],
   imports: [
     BrowserModule,

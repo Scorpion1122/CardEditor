@@ -1,6 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
+@font-face {
+    font-family: MrsEavesSmallCapsRegular;
+    src: url('/src/assets/fonts/MrsEavesSmallCaps-Regular.ttf') format("truetype");
+  }
+
 body {
     margin: 0;
 }
@@ -16,6 +21,10 @@ body {
 
 .insert-element {
   display: none;
+}
+
+.clickable {
+  cursor: pointer;
 }
 
 /* TUTORIAL STUFF */

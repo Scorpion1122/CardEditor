@@ -6,7 +6,9 @@
 }
 .background {
 	margin: auto auto;
-  background-color: #f5f1f0;
+  background-image: url('../../../assets/paper-texture-top.png'),url('../../../assets/paper-texture-tiling.png');
+  background-position: top, center;
+  background-repeat: no-repeat, repeat;
   border-radius: 2mm;
   width: 95%;
   height: 95.6%;

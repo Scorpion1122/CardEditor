@@ -20,6 +20,7 @@
         </mat-list-item>
       </mat-list>
       <button mat-icon-button (click)="addNewProperty()"><mat-icon>add</mat-icon></button>
+      <div class="mat-form-field-underline"><span class="mat-form-field-ripple"></span></div>
 
       <mat-form-field class="full-width">
         <textarea
@@ -58,6 +59,17 @@
             [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
             (matChipInputTokenEnd)="addTag($event)">
       </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <textarea
+          matInput
+          placeholder="Layout"
+          [(ngModel)]="selectedCard.layoutText"
+          name="layoutText"
+          cdkTextareaAutosize
+          #autosize="cdkTextareaAutosize"
+          cdkAutosizeMinRows="1"></textarea>
+    </mat-form-field>
   </form>
   <app-spell-card-detail [card]="selectedCard"></app-spell-card-detail>
 </div>
