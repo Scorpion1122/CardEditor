@@ -65,6 +65,7 @@
           matInput
           placeholder="Layout"
           [(ngModel)]="selectedCard.layoutText"
+          (ngModelChange)="cardLayoutChange()"
           name="layoutText"
           cdkTextareaAutosize
           #autosize="cdkTextareaAutosize"

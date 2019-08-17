@@ -31,6 +31,7 @@ import { PrintDocumentComponent } from './components/print-document/print-docume
 import { SpellCardDetailDirective } from './directives/spell-card-detail.directive';
 import { CardTitleComponent } from './components/card-elements/card-title/card-title.component';
 import { InsertContainerDirective } from './directives/insert-container.directive';
+import { CardSubtitleComponent } from './components/card-elements/card-subtitle/card-subtitle.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { InsertContainerDirective } from './directives/insert-container.directiv
     PrintDocumentComponent,
     SpellCardDetailDirective,
     CardTitleComponent,
-    InsertContainerDirective
+    InsertContainerDirective,
+    CardSubtitleComponent
   ],
   imports: [
     BrowserModule,

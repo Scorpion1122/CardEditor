@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { Location } from '@angular/common';
 import { Card } from 'src/app/models/card';
 import { CardService } from '../../services/card.service';
@@ -9,6 +9,7 @@ import { CardProperty } from 'src/app/models/card.property';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { MatChipInputEvent } from '@angular/material';
 import { IColor } from '@bytelabsco/ngx-color-selector';
+import { SpellCardDetailComponent } from '../spell-card-detail/spell-card-detail.component';
 
 @Component({
   selector: 'app-card-editor',
@@ -18,6 +19,8 @@ import { IColor } from '@bytelabsco/ngx-color-selector';
 export class CardEditorComponent implements OnInit, OnDestroy {
 
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
+
+  @ViewChild(SpellCardDetailComponent) private cardComponent: SpellCardDetailComponent;
 
   selectedCard: Card;
   getCardObservable: Observable<Card>;
@@ -74,6 +77,10 @@ export class CardEditorComponent implements OnInit, OnDestroy {
       this.cardService.deleteCard(this.selectedCard);
       this.goBack();
     }
+  }
+
+  cardLayoutChange() {
+    this.cardComponent.parseAndCreateLayoutContent();
   }
 
   goBack() {

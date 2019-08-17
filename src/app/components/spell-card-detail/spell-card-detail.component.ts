@@ -2,12 +2,13 @@ import { Component, OnInit, Input, ViewChild, ViewContainerRef, ComponentFactory
 import { Card } from '../../models/card';
 import { InsertContainerDirective } from 'src/app/directives/insert-container.directive';
 import { CardTitleComponent } from '../card-elements/card-title/card-title.component';
+import { CardSubtitleComponent } from '../card-elements/card-subtitle/card-subtitle.component';
 
 @Component({
   selector: 'app-spell-card-detail',
   templateUrl: './spell-card-detail.component.html',
   styleUrls: ['./spell-card-detail.component.css'],
-  entryComponents: [ CardTitleComponent ]
+  entryComponents: [ CardTitleComponent, CardSubtitleComponent ]
 })
 
 export class SpellCardDetailComponent implements OnInit {
@@ -18,6 +19,10 @@ export class SpellCardDetailComponent implements OnInit {
   constructor(private componentFactoryResolver: ComponentFactoryResolver) { }
 
   ngOnInit() {
+    this.parseAndCreateLayoutContent();
+  }
+
+  public parseAndCreateLayoutContent() {
     const viewContainerRef = this.insertDirective.viewContainerRef;
     viewContainerRef.clear();
 
@@ -32,18 +37,24 @@ export class SpellCardDetailComponent implements OnInit {
   }
 
   processLayoutString(command: string, content: string, container: ViewContainerRef): void {
+    let componentFactory;
+    let componentRef;
+
     switch (command) {
       default:
         // Error
         break;
       case 'title':
-        const componentFactory = this.componentFactoryResolver.resolveComponentFactory(CardTitleComponent);
-        const componentRef = container.createComponent(componentFactory);
+        componentFactory = this.componentFactoryResolver.resolveComponentFactory(CardTitleComponent);
+        componentRef = container.createComponent(componentFactory);
         (<CardTitleComponent>componentRef.instance).content = content;
         break;
       case 'rule':
         break;
-      case 'subtext':
+      case 'subtitle':
+        componentFactory = this.componentFactoryResolver.resolveComponentFactory(CardSubtitleComponent);
+        componentRef = container.createComponent(componentFactory);
+        (<CardSubtitleComponent>componentRef.instance).content = content;
         break;
       case 'attribute':
         break;
