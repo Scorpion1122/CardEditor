@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild, ElementRef, Renderer2, ViewEncapsulation } from '@angular/core';
 import { Location } from '@angular/common';
 import { Card } from 'src/app/models/card';
 import { CardService } from '../../services/card.service';
@@ -12,7 +12,8 @@ import { SpellCardDetailComponent } from '../spell-card-detail/spell-card-detail
 @Component({
   selector: 'app-card-editor',
   templateUrl: './card-editor.component.html',
-  styleUrls: ['./card-editor.component.css']
+  styleUrls: ['./card-editor.component.css'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class CardEditorComponent implements OnInit, OnDestroy {
 
@@ -20,6 +21,7 @@ export class CardEditorComponent implements OnInit, OnDestroy {
 
   @ViewChild(SpellCardDetailComponent) private cardComponent: SpellCardDetailComponent;
 
+  highlightText: string;
   selectedCard: Card;
   getCardObservable: Observable<Card>;
 
@@ -27,7 +29,8 @@ export class CardEditorComponent implements OnInit, OnDestroy {
     private location: Location,
     private route: ActivatedRoute,
     private router: Router,
-    private cardService: CardService) {
+    private cardService: CardService,
+    private renderer: Renderer2) {
   }
 
   ngOnInit() {
@@ -37,7 +40,7 @@ export class CardEditorComponent implements OnInit, OnDestroy {
     );
     this.getCardObservable.subscribe(card => {
       this.selectedCard = card;
-      console.log(this.selectedCard.borderColor.hex);
+      this.updateHighlightText(this.selectedCard.layoutText);
     });
   }
 
@@ -59,6 +62,31 @@ export class CardEditorComponent implements OnInit, OnDestroy {
 
   cardLayoutChange(input) {
     this.cardComponent.parseAndCreateLayoutContent();
+    this.updateHighlightText(this.selectedCard.layoutText);
+  }
+
+  updateHighlightText(text: string) {
+    const lines = text.split('\n');
+    let result = '';
+    for (let i = 0; i < lines.length; i++) {
+      let line = lines[i];
+
+      line = this.addMarkingToText(line, 'subtitle', 'keyword');
+      line = this.addMarkingToText(line, 'title', 'keyword');
+      line = this.addMarkingToText(line, 'rule', 'keyword');
+      line = this.addMarkingToText(line, 'attribute', 'keyword');
+      line = this.addMarkingToText(line, 'heading', 'keyword');
+      line = this.addMarkingToText(line, 'text', 'keyword');
+      line = this.addMarkingToText(line, 'space', 'keyword');
+      line = this.addMarkingToText(line, '|', 'seperator');
+
+      result += line + '</br>';
+    }
+    this.highlightText = result;
+  }
+
+  addMarkingToText(text: string, tag: string, cssClass: string): string {
+    return text.replace(tag + ' ', `<span class="${cssClass}">${tag} </span>`);
   }
 
   goBack() {
