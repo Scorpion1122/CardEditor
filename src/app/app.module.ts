@@ -38,6 +38,7 @@ import { CardAttributeComponent } from './components/card-elements/card-attribut
 import { CardSpaceComponent } from './components/card-elements/card-space/card-space.component';
 import { CardHeadingComponent } from './components/card-elements/card-heading/card-heading.component';
 import { CardTextComponent } from './components/card-elements/card-text/card-text.component';
+import { CardPrimaryStatsComponent } from './components/card-elements/card-primary-stats/card-primary-stats.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +60,8 @@ import { CardTextComponent } from './components/card-elements/card-text/card-tex
     CardAttributeComponent,
     CardSpaceComponent,
     CardHeadingComponent,
-    CardTextComponent
+    CardTextComponent,
+    CardPrimaryStatsComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,63 @@
+.primary-stat-container {
+    width: 100%;
+    height: auto;
+    flex-direction: row;
+    display: flex;
+    color: black;
+    justify-content: center;
+}
+
+.stat-background {
+    height: 100%;
+}
+
+.stat-container {
+    height: auto;
+    width: 15mm;
+
+    display: flex;
+    flex-direction: column;
+
+    font-family: 'Noto Sans', 'Myriad Pro', Calibri, Helvetica, Arial, sans-serif;
+    text-align: center;
+}
+
+.ac-container {
+    height: 15mm;
+    width: 15mm;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    background-image: url('../../../../assets/images/dnd-ac-stat.png');
+    background-size: contain;
+}
+
+.hp-container {
+    height: 15mm;
+    width: 15mm;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    background-image: url('../../../../assets/images/dnd-primary-stats.png');
+    background-size: contain;
+}
+
+.subtitle-text {
+    width: 100%;
+    font-size: 2mm;
+    font-weight: bold;
+}
+
+.value-text {    
+    font-family: 'Noto Sans', 'Myriad Pro', Calibri, Helvetica, Arial, sans-serif;
+    font-size: 6.5mm;
+}
+
+.value-detail-text {  
+    font-family: 'Noto Sans', 'Myriad Pro', Calibri, Helvetica, Arial, sans-serif;
+    font-size: 2mm;
+}

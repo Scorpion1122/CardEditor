@@ -10,6 +10,7 @@ import { CardHeadingComponent } from '../card-elements/card-heading/card-heading
 import { CardElementInterface } from '../card-elements/card-element.interface';
 import { CardTextComponent } from '../card-elements/card-text/card-text.component';
 import { CardSize } from 'src/app/models/card-size';
+import { CardPrimaryStatsComponent } from '../card-elements/card-primary-stats/card-primary-stats.component';
 
 @Component({
   selector: 'app-spell-card-detail',
@@ -22,7 +23,8 @@ import { CardSize } from 'src/app/models/card-size';
     CardAttributeComponent,
     CardSpaceComponent,
     CardHeadingComponent,
-    CardTextComponent ]
+    CardTextComponent,
+    CardPrimaryStatsComponent ]
 })
 
 export class SpellCardDetailComponent implements OnInit {
@@ -73,6 +75,9 @@ export class SpellCardDetailComponent implements OnInit {
       const content = line.substring(commandEnd + 1, line.length);
       this.processLayoutString(firstWord, content, viewContainerRef);
     }
+
+    // TEMP
+    this.createInstanceAndPassContent(CardPrimaryStatsComponent, '18 (natural armor) | 52 (10d10 + 2)', viewContainerRef);
   }
 
   processLayoutString(command: string, content: string, container: ViewContainerRef): void {
