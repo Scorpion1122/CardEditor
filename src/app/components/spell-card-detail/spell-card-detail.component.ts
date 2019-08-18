@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild, ViewContainerRef, ComponentFactoryResolver } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ViewContainerRef, ComponentFactoryResolver, ElementRef, Renderer2 } from '@angular/core';
 import { Card } from '../../models/card';
 import { InsertContainerDirective } from 'src/app/directives/insert-container.directive';
 import { CardTitleComponent } from '../card-elements/card-title/card-title.component';
@@ -9,6 +9,7 @@ import { CardSpaceComponent } from '../card-elements/card-space/card-space.compo
 import { CardHeadingComponent } from '../card-elements/card-heading/card-heading.component';
 import { CardElementInterface } from '../card-elements/card-element.interface';
 import { CardTextComponent } from '../card-elements/card-text/card-text.component';
+import { CardSize } from 'src/app/models/card-size';
 
 @Component({
   selector: 'app-spell-card-detail',
@@ -27,12 +28,31 @@ import { CardTextComponent } from '../card-elements/card-text/card-text.componen
 export class SpellCardDetailComponent implements OnInit {
 
   @ViewChild(InsertContainerDirective) insertDirective: InsertContainerDirective;
+  @ViewChild('cardSizeContainer') cardSizeCntainer: ElementRef;
+
   @Input() card: Card;
 
-  constructor(private componentFactoryResolver: ComponentFactoryResolver) { }
+  constructor(
+    private componentFactoryResolver: ComponentFactoryResolver,
+    private renderer: Renderer2) { }
 
   ngOnInit() {
+    this.updateCardSize();
     this.parseAndCreateLayoutContent();
+  }
+
+  public updateCardSize() {
+    this.renderer.removeClass(this.cardSizeCntainer.nativeElement, CardSize.Poker);
+    this.renderer.removeClass(this.cardSizeCntainer.nativeElement, CardSize.Tarot);
+
+    switch (this.card.cardSizeType) {
+      case CardSize.Poker:
+      this.renderer.addClass(this.cardSizeCntainer.nativeElement, CardSize.Poker);
+      break;
+      case CardSize.Tarot:
+      this.renderer.addClass(this.cardSizeCntainer.nativeElement, CardSize.Tarot);
+      break;
+    }
   }
 
   public parseAndCreateLayoutContent() {

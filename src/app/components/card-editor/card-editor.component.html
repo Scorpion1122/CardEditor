@@ -3,6 +3,17 @@
       <mat-form-field class="full-width">
         <input matInput placeholder="Title" [(ngModel)]="selectedCard.name" name="title">
       </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Card Size</mat-label>
+        <mat-select 
+          [(ngModel)]="selectedCard.cardSizeType"
+          (ngModelChange)="cardSizeChanged()"
+          name="cardSizeType">
+          <mat-option value="card-size-poker">Poker</mat-option>
+          <mat-option value="card-size-tarot">Tarot</mat-option>
+        </mat-select>
+      </mat-form-field>
       
       <mat-form-field class="full-width">
           <span [innerHtml]="highlightText" class="hightlight-container"></span>

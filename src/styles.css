@@ -4,7 +4,11 @@
 @font-face {
     font-family: MrsEavesSmallCapsRegular;
     src: url('assets/fonts/MrsEavesSmallCaps-Regular.ttf') format("truetype");
-  }
+}
+@font-face {
+    font-family: LibreBaskervilleRegular;
+    src: url('assets/fonts/LibreBaskerville-Regular.otf') format("opentype");
+}
 
 body {
     margin: 0;

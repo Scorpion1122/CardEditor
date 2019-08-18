@@ -13,6 +13,7 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatListModule } from '@angular/material/list';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatSelectModule } from '@angular/material/select';
 
 // External
 import { BytelabsColorSelectorModule } from '@bytelabsco/ngx-color-selector'; // https://github.com/bytelabsco/ngx-color-selector
@@ -74,7 +75,8 @@ import { CardTextComponent } from './components/card-elements/card-text/card-tex
     MatInputModule,
     MatListModule,
     MatCheckboxModule,
-    BytelabsColorSelectorModule
+    BytelabsColorSelectorModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

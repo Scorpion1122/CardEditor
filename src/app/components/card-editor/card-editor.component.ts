@@ -60,6 +60,10 @@ export class CardEditorComponent implements OnInit, OnDestroy {
     }
   }
 
+  cardSizeChanged(input) {
+    this.cardComponent.updateCardSize();
+  }
+
   cardLayoutChange(input) {
     this.cardComponent.parseAndCreateLayoutContent();
     this.updateHighlightText(this.selectedCard.layoutText);
