@@ -11,6 +11,7 @@ import { CardElementInterface } from '../card-elements/card-element.interface';
 import { CardTextComponent } from '../card-elements/card-text/card-text.component';
 import { CardSize } from 'src/app/models/card-size';
 import { CardPrimaryStatsComponent } from '../card-elements/card-primary-stats/card-primary-stats.component';
+import { CardAbilityScoresComponent } from '../card-elements/card-ability-scores/card-ability-scores.component';
 
 @Component({
   selector: 'app-spell-card-detail',
@@ -24,7 +25,8 @@ import { CardPrimaryStatsComponent } from '../card-elements/card-primary-stats/c
     CardSpaceComponent,
     CardHeadingComponent,
     CardTextComponent,
-    CardPrimaryStatsComponent ]
+    CardPrimaryStatsComponent,
+    CardAbilityScoresComponent ]
 })
 
 export class SpellCardDetailComponent implements OnInit {
@@ -109,6 +111,8 @@ export class SpellCardDetailComponent implements OnInit {
       case 'space':
         this.createInstanceAndPassContent(CardSpaceComponent, content, container);
       break;
+      case 'abilityscores':
+        this.createInstanceAndPassContent(CardAbilityScoresComponent, content, container);
     }
   }
 

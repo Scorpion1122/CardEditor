@@ -39,6 +39,7 @@ import { CardSpaceComponent } from './components/card-elements/card-space/card-s
 import { CardHeadingComponent } from './components/card-elements/card-heading/card-heading.component';
 import { CardTextComponent } from './components/card-elements/card-text/card-text.component';
 import { CardPrimaryStatsComponent } from './components/card-elements/card-primary-stats/card-primary-stats.component';
+import { CardAbilityScoresComponent } from './components/card-elements/card-ability-scores/card-ability-scores.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +62,8 @@ import { CardPrimaryStatsComponent } from './components/card-elements/card-prima
     CardSpaceComponent,
     CardHeadingComponent,
     CardTextComponent,
-    CardPrimaryStatsComponent
+    CardPrimaryStatsComponent,
+    CardAbilityScoresComponent
   ],
   imports: [
     BrowserModule,
