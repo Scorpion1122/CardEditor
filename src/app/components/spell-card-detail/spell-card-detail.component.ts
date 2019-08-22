@@ -33,6 +33,7 @@ export class SpellCardDetailComponent implements OnInit {
 
   @ViewChild(InsertContainerDirective) insertDirective: InsertContainerDirective;
   @ViewChild('cardSizeContainer') cardSizeCntainer: ElementRef;
+  @ViewChild('cardContentContainer') cardContentContainer: ElementRef;
 
   @Input() card: Card;
 
@@ -46,17 +47,30 @@ export class SpellCardDetailComponent implements OnInit {
   }
 
   public updateCardSize() {
-    this.renderer.removeClass(this.cardSizeCntainer.nativeElement, CardSize.Poker);
-    this.renderer.removeClass(this.cardSizeCntainer.nativeElement, CardSize.Tarot);
+    this.removeColumnStyle();
 
-    switch (this.card.cardSizeType) {
-      case CardSize.Poker:
-      this.renderer.addClass(this.cardSizeCntainer.nativeElement, CardSize.Poker);
-      break;
-      case CardSize.Tarot:
-      this.renderer.addClass(this.cardSizeCntainer.nativeElement, CardSize.Tarot);
-      break;
+    for (const key of Object.keys(CardSize)) {
+      const item = CardSize[key];
+      this.renderer.removeClass(this.cardSizeCntainer.nativeElement, item);
+
+      if (this.card.cardSizeType === item) {
+        this.renderer.addClass(this.cardSizeCntainer.nativeElement, item);
+      }
     }
+
+    if (this.card.cardSizeType === CardSize.A6H) {
+      this.addColumnStyles();
+    }
+  }
+
+  private removeColumnStyle() {
+    this.renderer.removeStyle(this.cardContentContainer.nativeElement, 'column-count');
+    this.renderer.removeStyle(this.cardContentContainer.nativeElement, 'column-fill');
+  }
+
+  private addColumnStyles() {
+    this.renderer.setStyle(this.cardContentContainer.nativeElement, 'column-count', '2');
+    this.renderer.setStyle(this.cardContentContainer.nativeElement, 'column-fill', 'auto');
   }
 
   public parseAndCreateLayoutContent() {
@@ -107,7 +121,7 @@ export class SpellCardDetailComponent implements OnInit {
       case 'space':
         this.createInstanceAndPassContent(CardSpaceComponent, content, container);
       break;
-      case 'abilityscores':
+      case 'ability-scores':
         this.createInstanceAndPassContent(CardAbilityScoresComponent, content, container);
     }
   }

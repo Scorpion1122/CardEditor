@@ -1,7 +1,7 @@
 <div #cardSizeContainer class="card-size-poker">
   <div class="background-border" [ngStyle]="{'background-color': card.borderColor.hex}">
     <div class="background">
-      <div class="content-container">
+      <div #cardContentContainer class="content-container">
         <ng-container insert-container></ng-container>
       </div>
     </div>

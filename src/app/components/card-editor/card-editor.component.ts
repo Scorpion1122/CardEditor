@@ -82,7 +82,7 @@ export class CardEditorComponent implements OnInit, OnDestroy {
       line = this.addMarkingToText(line, 'heading', 'keyword');
       line = this.addMarkingToText(line, 'text', 'keyword');
       line = this.addMarkingToText(line, 'space', 'keyword');
-      line = this.addMarkingToText(line, 'abilityscores', 'keyword');
+      line = this.addMarkingToText(line, 'ability-scores', 'keyword');
       line = this.addMarkingToText(line, '|', 'seperator');
 
       result += line + '</br>';

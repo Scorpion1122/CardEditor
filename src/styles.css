@@ -28,6 +28,11 @@ body {
     height: 121mm;
 }
 
+.card-size-a6h {
+    width: 148mm;
+    height: 105mm;
+}
+
 .insert-element {
   display: none;
 }
