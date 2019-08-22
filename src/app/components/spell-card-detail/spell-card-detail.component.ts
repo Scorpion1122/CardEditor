@@ -58,7 +58,8 @@ export class SpellCardDetailComponent implements OnInit {
       }
     }
 
-    if (this.card.cardSizeType === CardSize.A6H) {
+    if (this.card.cardSizeType === CardSize.A6H
+      || this.card.cardSizeType === CardSize.Oversize) {
       this.addColumnStyles();
     }
   }

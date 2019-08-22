@@ -25,10 +25,15 @@ body {
 
 .card-size-tarot {
     width: 70mm;
-    height: 121mm;
+    height: 120mm;
 }
 
-.card-size-a6h {
+.card-size-oversize-h {
+    width: 120mm;
+    height: 79mm;
+}
+
+.card-size-a6-h {
     width: 148mm;
     height: 105mm;
 }
