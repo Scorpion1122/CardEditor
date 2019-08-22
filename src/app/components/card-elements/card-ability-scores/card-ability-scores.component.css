@@ -7,24 +7,39 @@
     justify-content: center;
 
     color: black;
+
+    text-align: center;
 }
 
 .score {
     height: 20mm;
-    width: 20mm;
+    width: 100%;
+    margin: 0 auto;
     
     display: flex;
     flex-direction: column;
+    justify-content: center;
 }
 
 .score-modifier {
+    width: 100%;
+    height: 100%;
 
+    padding-top: 1mm;
+    font-size: 3mm;
 }
 
 .score-value {
+    width: 100%;
+    height: 100%;
 
+    font-size: 3mm;
 }
 
-.score-type {
+.score-name {
+    width: 100%;
+    height: 3.5mm;
 
+    font-weight: bold;
+    font-size: 3.5mm;
 }

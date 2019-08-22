@@ -77,15 +77,11 @@ export class SpellCardDetailComponent implements OnInit {
       const content = line.substring(commandEnd + 1, line.length);
       this.processLayoutString(firstWord, content, viewContainerRef);
     }
-
-    // TEMP
-    this.createInstanceAndPassContent(CardPrimaryStatsComponent, '18 (natural armor) | 52 (10d10 + 2)', viewContainerRef);
   }
 
   processLayoutString(command: string, content: string, container: ViewContainerRef): void {
     let componentFactory;
 
-    console.log(command);
     switch (command) {
       case 'title':
         this.createInstanceAndPassContent(CardTitleComponent, content, container);

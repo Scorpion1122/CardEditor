@@ -1,7 +1,6 @@
 <div class="score-container">
   <div class="score" *ngFor="let abilityScore of abilityScores">
-      <div class="score-modifier">{{abilityScore.getModifierString()}}</div>
-      <div class="score-value">{{abilityScore.value}}</div>
       <div class="score-name">{{abilityScore.type}}</div>
+      <div class="score-modifier">{{abilityScore.getModifierString()}}</div>
   </div> 
 </div> 
