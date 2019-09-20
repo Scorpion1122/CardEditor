@@ -16,6 +16,10 @@
   border-bottom-style: solid;
 }
 
+app-spell-card-detail {
+  margin: auto;
+}
+
 @page {
   margin: 0;
   padding: 0;

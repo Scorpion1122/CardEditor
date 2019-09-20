@@ -22,11 +22,11 @@ export class PrintPageComponent implements OnInit {
     const viewContainerRef = this.cardDirective.viewContainerRef;
     viewContainerRef.clear();
 
-    const cardsPerPage = 9;
-    for (let i = 0; i < cardsPerPage; i++) {
-      const componentRef = viewContainerRef.createComponent(componentFactory);
+    console.log(this.cards.length);
+    for (let i = 0; i < this.cards.length; i++) {
 
       if (i < this.cards.length) {
+        const componentRef = viewContainerRef.createComponent(componentFactory);
         (<SpellCardDetailComponent>componentRef.instance).card = this.cards[i];
       }
     }
