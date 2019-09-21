@@ -41,6 +41,7 @@ import { CardTextComponent } from './components/card-elements/card-text/card-tex
 import { CardPrimaryStatsComponent } from './components/card-elements/card-primary-stats/card-primary-stats.component';
 import { CardAbilityScoresComponent } from './components/card-elements/card-ability-scores/card-ability-scores.component';
 import { UserComponent } from './components/user/user.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -69,6 +70,7 @@ import { UserComponent } from './components/user/user.component';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     FormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,

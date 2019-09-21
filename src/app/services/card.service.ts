@@ -1,20 +1,49 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
 import { Card } from '../models/card';
-import { Observable, of, Subject } from 'rxjs';
-import { MessageService } from './message.service';
+import { Observable, of, Subject, Subscription } from 'rxjs';
+import { environment } from './../../environments/environment';
 
 import { CARDS } from '../models/mock-cards';
+import { AuthService } from './auth.service';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CardService {
+export class CardService implements OnDestroy {
+
+  getCardsUrl = '/v1/cards/get_all';
 
   cards: Card[] = CARDS;
   cardsUpdated: Subject<Card[]>;
 
-  constructor(private messageService: MessageService) {
+  loginSubscription: Subscription;
+  logoutSubscription: Subscription;
+
+  constructor(private http: HttpClient, private authService: AuthService) {
     this.cardsUpdated = new Subject<Card[]>();
+
+    this.logoutSubscription = this.authService.getOnLogout().subscribe(_ => { this.clearAllLocalData(); });
+    this.loginSubscription = this.authService.getOnLogin().subscribe(_ => { this.loadAllCardData(); } );
+  }
+
+  ngOnDestroy() {
+    this.loginSubscription.unsubscribe();
+    this.logoutSubscription.unsubscribe();
+  }
+
+  clearAllLocalData() {
+    this.cards = [];
+    console.log('login event! Clear All Card Data');
+  }
+
+  loadAllCardData() {
+
+    const url = environment.apiUrl + this.getCardsUrl;
+    this.http.get(url, environment.httpOptions)
+      .subscribe((data) => {
+        console.log(data);
+    });
   }
 
   createNewCard(): Observable<Card> {
@@ -31,7 +60,6 @@ export class CardService {
   getCards(): Observable<Card[]> {
     const observable = of(this.cards);
     observable.subscribe(cards => {
-      this.messageService.add('CardService: fetched cards!');
     });
     return observable;
   }

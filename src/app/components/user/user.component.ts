@@ -1,4 +1,5 @@
 import { Component, OnInit, NgZone } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-user',
@@ -7,7 +8,7 @@ import { Component, OnInit, NgZone } from '@angular/core';
 })
 export class UserComponent implements OnInit {
 
-  constructor(private ngZone: NgZone) {
+  constructor(private ngZone: NgZone, private authService: AuthService) {
     window['onSignIn'] = (googleUser) => this.ngZone.run(() => this.onSignIn(googleUser));
   }
 
@@ -27,6 +28,7 @@ export class UserComponent implements OnInit {
     // The ID token you need to pass to your backend:
     const id_token = googleUser.getAuthResponse().id_token;
     console.log('ID Token: ' + id_token);
-  }
 
+    this.authService.googleLoginDetected(googleUser);
+  }
 }
