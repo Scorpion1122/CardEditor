@@ -3,9 +3,9 @@ import { Card } from '../models/card';
 import { Observable, of, Subject, Subscription } from 'rxjs';
 import { environment } from './../../environments/environment';
 
-import { CARDS } from '../models/mock-cards';
 import { AuthService } from './auth.service';
 import { HttpClient } from '@angular/common/http';
+import { ExportImportService } from './export-import.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +14,7 @@ export class CardService implements OnDestroy {
 
   getCardsUrl = '/v1/cards/get_all';
 
-  cards: Card[] = CARDS;
+  cards: Card[] = [];
   cardsUpdated: Subject<Card[]>;
 
   loginSubscription: Subscription;
@@ -24,7 +24,10 @@ export class CardService implements OnDestroy {
     this.cardsUpdated = new Subject<Card[]>();
 
     this.logoutSubscription = this.authService.getOnLogout().subscribe(_ => { this.clearAllLocalData(); });
-    this.loginSubscription = this.authService.getOnLogin().subscribe(_ => { this.loadAllCardData(); } );
+    this.loginSubscription = this.authService.getOnLogin()
+      .subscribe(_ => {
+          this.apiLoadAllCardData();
+        });
   }
 
   ngOnDestroy() {
@@ -37,20 +40,47 @@ export class CardService implements OnDestroy {
     console.log('login event! Clear All Card Data');
   }
 
-  loadAllCardData() {
-
+  apiLoadAllCardData() {
     const url = environment.apiUrl + this.getCardsUrl;
     this.http.get(url, environment.httpOptions)
       .subscribe((data) => {
-        console.log(data);
+        if (!Array.isArray(data)) {
+          return;
+        }
+
+        for (const cardData of data) {
+          const card = this.createCardFromJsonData(cardData);
+          if (card !== null) {
+            this.cards.push(card);
+          }
+        }
+        this.cardsUpdated.next(this.cards);
     });
+  }
+
+  createCardFromJsonData(jsonData) {
+    if (typeof jsonData.name === 'undefined') {
+      return null;
+    }
+
+    const card = new Card();
+    card._id = jsonData._id;
+    card.name = jsonData.name;
+    card.tags = jsonData.tags;
+    card.layoutText = jsonData.layoutText;
+
+    if (typeof jsonData.borderColor !== 'undefined'
+      && typeof jsonData.borderColor.hex !== 'undefined') {
+      card.borderColor.hex = jsonData.borderColor.hex;
+    }
+    return card;
   }
 
   createNewCard(): Observable<Card> {
     const newCard: Card = new Card();
     for (const card of this.cards) {
-      if (card.id <= newCard.id) {
-        newCard.id = card.id + 1;
+      if (card._id <= newCard._id) {
+        newCard._id = card._id + 1;
       }
     }
     this.cards.push(newCard);
@@ -64,8 +94,8 @@ export class CardService implements OnDestroy {
     return observable;
   }
 
-  getCard(id: number): Observable<Card> {
-    const card = this.cards.find(x => x.id === id);
+  getCard(_id: String): Observable<Card> {
+    const card = this.cards.find(x => x._id === _id);
     return of(card);
   }
 

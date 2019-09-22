@@ -38,7 +38,7 @@ export class ExportImportService {
       }
 
       const card = new Card();
-      card.id = cardData.id;
+      card._id = cardData.id;
       card.name = cardData.name;
       card.tags = cardData.tags;
       card.layoutText = cardData.layoutText;

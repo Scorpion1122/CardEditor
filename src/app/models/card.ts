@@ -2,7 +2,7 @@ import { Color } from './color';
 import { CardSize } from './card-size';
 
 export class Card {
-    id: number;
+    _id: string;
     name: string;
     borderColor: Color;
     tags: string[];
@@ -11,7 +11,7 @@ export class Card {
     layoutText: string;
 
     constructor() {
-        this.id = 1;
+        this._id = null;
         this.name = 'New Card';
         this.borderColor = new Color('#444444');
         this.tags = [];

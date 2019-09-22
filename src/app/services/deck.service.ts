@@ -18,14 +18,14 @@ export class DeckService {
   setCardsInDeck(cards: Card[]) {
     this.currentDeck.clearSelection();
     for (const card of cards) {
-      this.currentDeck.selection.push(card.id);
+      this.currentDeck.selection.push(card._id);
     }
   }
 
   getCardsInCurrentDeck(): Observable<Card[]> {
     const cards = [];
     for (const card of this.cardService.cards) {
-      if (this.currentDeck.selection.indexOf(card.id) >= 0) {
+      if (this.currentDeck.selection.indexOf(card._id) >= 0) {
         cards.push(card);
       }
     }

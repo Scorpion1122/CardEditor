@@ -1,7 +1,7 @@
 export class Deck {
   id: number;
   name: string;
-  selection: number[];
+  selection: string[];
 
   constructor() {
     this.id = 1;

@@ -30,6 +30,6 @@ export class HeaderComponent implements OnInit {
   createNewCard() {
     this.cardService.createNewCard()
     .subscribe(card =>
-      this.router.navigate(['/card/' + card.id], { relativeTo: this.route}));
+      this.router.navigate(['/card/' + card._id], { relativeTo: this.route}));
   }
 }

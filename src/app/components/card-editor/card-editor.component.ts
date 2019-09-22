@@ -35,8 +35,7 @@ export class CardEditorComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.getCardObservable = this.route.paramMap.pipe(
-      switchMap((params: ParamMap) =>
-        this.cardService.getCard(+params.get('id')))
+      switchMap((params: ParamMap) => this.cardService.getCard(params.get('_id')))
     );
     this.getCardObservable.subscribe(card => {
       this.selectedCard = card;

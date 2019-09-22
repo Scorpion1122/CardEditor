@@ -2,7 +2,6 @@ import { Component, OnInit, ComponentFactoryResolver, ViewChild, Input } from '@
 import { SpellCardDetailComponent } from '../spell-card-detail/spell-card-detail.component';
 import { SpellCardDetailDirective } from 'src/app/directives/spell-card-detail.directive';
 import { Card } from 'src/app/models/card';
-import { CARDS } from 'src/app/models/mock-cards';
 
 @Component({
   selector: 'app-print-page',
@@ -13,7 +12,7 @@ import { CARDS } from 'src/app/models/mock-cards';
 export class PrintPageComponent implements OnInit {
 
   @ViewChild(SpellCardDetailDirective) cardDirective: SpellCardDetailDirective;
-  @Input() cards: Card[] = CARDS;
+  @Input() cards: Card[] = [];
 
   constructor(private componentFactoryResolver: ComponentFactoryResolver) { }
 

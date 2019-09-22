@@ -1,7 +1,6 @@
 import { Component, OnInit, ComponentFactoryResolver, ViewChild, ViewContainerRef } from '@angular/core';
 import { PrintPageComponent } from '../print-page/print-page.component';
 import { PrintablePageDirective } from 'src/app/directives/printable-page.directive';
-import { CARDS } from '../../models/mock-cards';
 import { Card } from '../../models/card';
 import { DeckService } from 'src/app/services/deck.service';
 import { CardSize } from 'src/app/models/card-size';
@@ -15,7 +14,7 @@ import { CardSize } from 'src/app/models/card-size';
 export class PrintDocumentComponent implements OnInit {
 
   @ViewChild(PrintablePageDirective) printDirective: PrintablePageDirective;
-  cards: Card[] = CARDS;
+  cards: Card[] = [];
 
   constructor(
     private componentFactoryResolver: ComponentFactoryResolver,

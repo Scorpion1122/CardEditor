@@ -22,7 +22,7 @@
     <!-- Name Column -->
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef> Name </th>
-      <td class="clickable" mat-cell *matCellDef="let element" [routerLink]="['/card', element.id]"> {{element.name}} </td>
+      <td class="clickable" mat-cell *matCellDef="let element" [routerLink]="['/card', element._id]"> {{element.name}} </td>
     </ng-container>
 
     <!-- Sub Title Column -->
@@ -47,7 +47,7 @@
     <ng-container matColumnDef="edit">
       <th mat-header-cell *matHeaderCellDef></th>
       <td mat-cell *matCellDef="let element" class="edit-button">
-        <button mat-button mat-icon-button [routerLink]="['/card', element.id]">
+        <button mat-button mat-icon-button [routerLink]="['/card', element._id]">
           <mat-icon>edit</mat-icon>
         </button>
       </td>
