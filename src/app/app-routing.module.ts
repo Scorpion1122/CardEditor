@@ -6,7 +6,7 @@ import { PrintDocumentComponent } from './components/print-document/print-docume
 
 const routes: Routes = [
   { path: 'collection', component: CardCollectionComponent },
-  { path: 'card/:id', component: CardEditorComponent },
+  { path: 'card/:_id', component: CardEditorComponent },
   { path: 'print', component: PrintDocumentComponent }
 ];
 
